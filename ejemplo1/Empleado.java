@@ -10,10 +10,9 @@ public class Empleado extends Persona
 		setCargo("cVacio");
 	}
 
-	Empleado(String n, String a, String c);
+	Empleado (String n, String a, String c);
 	{
-		//setNombre(n);
-		//setApellido(a);
+
 		super(n,a);
 		setCargo(c);
 	}

@@ -45,10 +45,10 @@ public class Calculadora
 		ventana.add(tf_resp);
 
 		
-		btn_sumar = new JButton("Sumar");
-		btn_sumar.setBounds(20,95,70,20);
-		btn_sumar.addActionListener(this);
-		ventana.add(btn_sumar);
+		//btn_sumar = new JButton("Sumar");
+		//btn_sumar.setBounds(20,95,70,20);
+		//btn_sumar.addActionListener(this);
+		//ventana.add(btn_sumar);
 
 	
 

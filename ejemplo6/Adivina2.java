@@ -85,7 +85,7 @@ public class Adivina2 implements ActionListener
 		if(e.getSource()==btn_inicio)
 		{
 			tf_inf.setText("1");
-			tf.sup.setText("100")
+			tf_sup.setText("100");
 			tf_computadora.setText(String.valueOf(rnd.nextInt(100)+1));
 		}
 		if(e.getSource()==btn_bajo)

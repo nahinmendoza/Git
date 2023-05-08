@@ -81,15 +81,15 @@ public class Adivina implements ActionListener
 				System.out.println("u:"+tf_usuario.getText());
 				System.out.println("c:"+tf_computadora.getText());
 				System.out.print("alto:");
-				System.out.println(tf_usuario.getText().compareTo(tf_computadora.getText()) > 0));
+				System.out.println(tf_usuario.getText().compareTo(tf_computadora.getText()) > 0);
 				System.out.println("bajo:");
-				System.out.prinln(tf_usuario.getText().compareTo(tf_computadora.getText()) > 0));
+				System.out.println(tf_usuario.getText().compareTo(tf_computadora.getText()) > 0);
 				//if(tf_usuario.getText().compareTo(tf_computadora.getText()) > 0)
 				if(Integer.parseInt(tf_usuario.getText()) > Integer.parseInt(tf_computadora.getText()))
 					tf_mensaje.setText("Muy Alto");
 				else 
 					//if(tf_usuario.getText().compareTo(tf_computadora.getText()) < 0)
-					if(Integer.parseInt(tf_usuario.getText() < Integer.parseInt(tf_computadora.getText()))
+					if (Integer.parseInt(tf_usuario.getText() < Integer.parseInt(tf_computadora.getText())))
 						tf_mensaje.setText("Muy Bajo");
 				else
 				{	
