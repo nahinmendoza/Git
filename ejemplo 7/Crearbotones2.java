@@ -6,8 +6,8 @@ public class Crearbotones2 implements ActionListener
 
    JFrame ventana;
    JButton btn_boton, btn_tmp, btn_iniciar;
-   JLabel lbl_valor;
-   JTextField tf_valor;
+   JLabel lbl_valor, lbl_x, lbl_y;
+   JTextField tf_valor, tf_x, tf_y;
    int i;
 
    public static void main(String[] args)
@@ -30,10 +30,26 @@ public class Crearbotones2 implements ActionListener
       lbl_valor = new JLabel("Valor");
       lbl_valor.setBounds(50,75,80,20);
       ventana.add(lbl_valor);
-
+     
       tf_valor = new JTextField();
       tf_valor.setBounds(135,75,80,20);
       ventana.add(tf_valor);
+
+      lbl_x = new JLabel("X");
+      lbl_x.setBounds(220,75,80,20);
+      ventana.add(lbl_x);
+
+      tf_x = new JTextField();
+      tf_x.setBounds(265,75,80,20);
+      ventana.add(tf_x);
+
+      lbl_y = new JLabel("Y");
+      lbl_y.setBounds(290,75,105,20);
+      ventana.add(lbl_y);
+
+      tf_y = new JTextField();
+      tf_y.setBounds(320,75,105,20);
+      ventana.add(tf_y);
       
       ventana.setVisible(true);
    
@@ -49,9 +65,10 @@ public class Crearbotones2 implements ActionListener
          btn_tmp = (JButton)e.getSource();     
          tf_valor.setText(btn_tmp.getText()); 
          System.out.println(btn_tmp.getText());
-         btn_tmp.setText("B"+btn_tmp.getText());
+        // btn_tmp.setText("B"+btn_tmp.getText());
         // btn_tmp.setEnabled(false);
- 
+        tf_x.setText(String.valueOf(btn_tmp.getLocation().x));
+        tf_y.setText(String.valueOf(btn_tmp.getLocation().y));
 
          if (e.getSource() == btn_boton)
             System.out.println("en actionPerformed");
