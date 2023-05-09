@@ -60,10 +60,10 @@ public class Crearbotones2 implements ActionListener
 
    private void crear()
    {
-      for (i=0; i<5; i++)
+      for (i=0; i<9; i++)
       {
          btn_boton = new JButton(String.valueOf(i));
-         btn_boton.setBounds(50+85*i,50,80,20);
+         btn_boton.setBounds(50+55*(i%3),100+25*(i/3),50,20);
          btn_boton.addActionListener(this);
          ventana.add(btn_boton);
       }
