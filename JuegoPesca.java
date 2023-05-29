@@ -5,8 +5,8 @@ import java.util.*;
 public class JuegoPesca implements ActionListener {
     JFrame ventana;
     JButton btn_boton;
-    JLabel lbl_x, lbl_y, lbl_norte, lbl_sur, lbl_este, lbl_oeste, lbl_ubicacion;
-    JTextField tf_ubicacion;
+    JLabel lbl_x, lbl_y, lbl_norte, lbl_sur, lbl_este, lbl_oeste, lbl_ubicacion, lbl_intentos;
+    JTextField tf_ubicacion, tf_intentos;
     int i, j, number;
     Random rnd;
     Peces cardumen;
@@ -65,6 +65,7 @@ public class JuegoPesca implements ActionListener {
             ventana.add(lbl_y);
         }
 
+        //LABEL PARA MOSTRAR LA UBICACION
         lbl_ubicacion = new JLabel("UBICACION");
         lbl_ubicacion.setBounds(530,700,100,25);
         ventana.add(lbl_ubicacion);
@@ -74,6 +75,17 @@ public class JuegoPesca implements ActionListener {
         tf_ubicacion.setBounds(600, 700, 55, 25);
         tf_ubicacion.setVisible(true);
         ventana.add(tf_ubicacion);
+
+        //LABEL PARA MOSTRAR INTENTOS
+        lbl_intentos = new JLabel ("INTENTOS");
+        lbl_intentos.setBounds(530,730,100,25);
+        ventana.add(lbl_intentos);
+
+        //TEXTFIELD PARA LOS INTENTOS
+        tf_intentos = new JTextField();
+        tf_intentos.setBounds(600,730,55,25);
+        tf_intentos.setVisible(true);
+        ventana.add(tf_intentos);
 
         ventana.setVisible(true);
 
