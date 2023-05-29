@@ -93,6 +93,7 @@ public class JuegoPesca implements ActionListener {
         rnd = new Random();
         cardumen = new Peces(rnd.nextInt(100));
         tf_ubicacion.setText(String.valueOf(cardumen.getUbicacion()));
+        //tf_ubicacion.setHorizontalAlignment(());
     }
 
     public void actionPerformed(ActionEvent e) {
