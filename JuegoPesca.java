@@ -148,32 +148,32 @@ public class JuegoPesca implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() instanceof JButton) {
             JButton clickedButton = (JButton) e.getSource();
-            int buttonNumber = Integer.parseInt(clickedButton.getText());
+            int btn_boton = Integer.parseInt(clickedButton.getText());
     
             intentos++;
             tf_intentos.setText(String.valueOf(intentos));
     
-            if (buttonNumber == cardumen.getUbicacion()) {
+            if (btn_boton == cardumen.getUbicacion()) {
                 tf_mensaje.setText("¡Has atrapado al cardumen! Juega otra vez.");
                 cardumen.setUbicacion(rnd.nextInt(100));
                 tf_ubicacion.setText(String.valueOf(cardumen.getUbicacion()));
                 intentos = 0;
                 tf_intentos.setText(String.valueOf(intentos));
-            } else if (esAdyacente(buttonNumber, cardumen.getUbicacion())) {
+            } else if (esAdyacente(btn_boton, cardumen.getUbicacion())) {
                 cardumen.setUbicacion(rnd.nextInt(100));
                 tf_ubicacion.setText(String.valueOf(cardumen.getUbicacion()));
                 tf_mensaje.setText("Asustastes al cardumen. Sigue intentando");
             } else {
-                String direccion = determinarDireccion(buttonNumber);
+                String direccion = determinarDireccion(btn_boton);
                 tf_mensaje.setText("El cardumen está hacia el " + direccion);
             }
         }
     }
     
     
-    private boolean esAdyacente(int buttonNumber, int cardumenPosition) {
-        int buttonRow = buttonNumber / 10;
-        int buttonColumn = buttonNumber % 10;
+    private boolean esAdyacente(int btn_boton, int cardumenPosition) {
+        int buttonRow = btn_boton / 10;
+        int buttonColumn = btn_boton % 10;
         int cardumenRow = cardumenPosition / 10;
         int cardumenColumn = cardumenPosition % 10;
     
@@ -182,10 +182,10 @@ public class JuegoPesca implements ActionListener {
     }
     
 
-    private String determinarDireccion(int buttonNumber) {
+    private String determinarDireccion(int btn_boton) {
         int cardumenPosition = cardumen.getUbicacion();
-        int buttonRow = buttonNumber / 10;
-        int buttonColumn = buttonNumber % 10;
+        int buttonRow = btn_boton / 10;
+        int buttonColumn = btn_boton % 10;
         int cardumenRow = cardumenPosition / 10;
         int cardumenColumn = cardumenPosition % 10;
     
