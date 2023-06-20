@@ -1,33 +1,34 @@
 public class Empleado extends Persona
 {
-	private String cargo;
-	private String nombre;
-	
-	Empleado()
-	{
-		setNombre("nVacio");
-		setApellido("aVacio");
-		setCargo("cVacio");
-	}
+   private String cargo;
+   Empleado()
+   {
+       setNombre("nVACIO");
+       setApellido("aVACIO");
+       setCargo("cVACIO");
+   }
 
-	Empleado (String n, String a, String c);
-	{
+   Empleado(String n, String a, String c)
+   {
+      //setNombre(n);
+      //setApellido(a);
+      super(n, a);
+      setCargo(c);
+   }
 
-		super(n,a);
-		setCargo(c);
-	}
-	public void setCargo(String n)
-	{
-		cargo = n;
-	}	
 
-	public String getCargo()
-	{
-		return cargo;
-	}
+   public void setCargo(String n)
+   {
+      cargo = n;
+   }
+   public String getCargo()
+   {
+      return cargo;
+   }
 
-	public void setNombre( String n)
-	{
-		super.setNombre(n);
-	}
+   public void setNombre(String n)
+   {
+      super.setNombre(n);
+   }
+
 }
