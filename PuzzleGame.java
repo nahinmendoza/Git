@@ -1,14 +1,14 @@
 import javax.swing.JFrame;
 
-public class PuzzleProy {
+public class PuzzleGame {
     
     JFrame ventana;
     public static void main(String[] args) 
     {
-        new PuzzleProy();
+        new PuzzleGame();
     }
 
-    PuzzleProy() 
+    PuzzleGame() 
     {
         // VENTANA DEL JUEGO
         ventana = new JFrame("ATRAPA EL CARDUMEN");
