@@ -15,5 +15,7 @@ public class PuzzleGame {
         ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);
         ventana.setLayout(null);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setVisible(true);
     }
+
 }
