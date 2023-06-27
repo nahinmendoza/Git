@@ -113,11 +113,10 @@ public class Mysql implements ActionListener
       apellido = "";
 
       sql = "";
-
       try
       {
          sql = "select * from cliente";
-         bd.executeQuery(sql);
+         ResultSet rs = bd.executeQuery(sql);
          listModel.clear();
          while (rs.next())
          {
@@ -126,9 +125,9 @@ public class Mysql implements ActionListener
             apellido = rs.getString("apellido");
             listModel.addElement(cedula + "  " + nombre + "  " + apellido);
          }
-         bd.listar();
-       }
-       catch(Exception e)
+         bd.cerrar();
+      }
+      catch(Exception e)
        {
            System.out.println("error listar " + e.toString());
        }
@@ -151,7 +150,7 @@ public class Mysql implements ActionListener
          sql = "select * from cliente where cedula = '" + tf_cedula.getText() + "'";
 
          System.out.println(sql);
-
+         
          ResultSet rs = bd.executeQuery(sql);
 
          if (rs.next())
@@ -167,7 +166,8 @@ public class Mysql implements ActionListener
             tf_nombre.setText("");
             tf_apellido.setText("");
          }
-         bd.cerrar();
+
+        bd.cerrar();
        }
        catch(Exception e)
        {
@@ -178,9 +178,7 @@ public class Mysql implements ActionListener
 
    public void agregar()
    {
-      URL = "jdbc:mysql://127.0.0.1/1ls221";
-      user = "root";
-      pass = "root";
+      BD bd = new BD();
 
       cedula = "";
       nombre = "";
@@ -188,32 +186,17 @@ public class Mysql implements ActionListener
 
       sql = "";
 
-      try
-      {
-         Connection con = DriverManager.getConnection(URL,user,pass);
-         Statement stmt = con.createStatement();
          //sql = "insert into cliente (cedula,nombre, apellido) values('8-5','Ricardo','Chan')";
          sql = "insert into cliente (cedula,nombre, apellido) values('"+ tf_cedula.getText() + "','" + tf_nombre.getText() + "','" + tf_apellido.getText() + "')";
 
-         System.out.println(sql);
-
-         stmt.executeUpdate(sql);
-
-         stmt.close();
-         con.close();
-       }
-       catch(Exception e)
-       {
-           System.out.println("error agregar " + e.toString());
-       }
-
+         bd.executeUpdate(sql);
+         bd.cerrar();
+         
    }
 
    public void modificar()
    {
-      URL = "jdbc:mysql://127.0.0.1/1ls221";
-      user = "root";
-      pass = "root";
+      BD bd = new BD();
 
       cedula = "";
       nombre = "";
@@ -221,32 +204,18 @@ public class Mysql implements ActionListener
 
       sql = "";
 
-      try
-      {
-         Connection con = DriverManager.getConnection(URL,user,pass);
-         Statement stmt = con.createStatement();
-         //sql = "update cliente set nombre = 'Pedro', apellido = 'Castro' where cedula = '8-5'";
+        //sql = "update cliente set nombre = 'Pedro', apellido = 'Castro' where cedula = '8-5'";
          sql = "update cliente set nombre = '" + tf_nombre.getText() + "', apellido = '" + tf_apellido.getText() + "' where cedula = '" + tf_cedula.getText() + "'";
 
-         System.out.println(sql);
+         bd.executeUpdate(sql);
 
-         stmt.executeUpdate(sql);
-
-         stmt.close();
-         con.close();
-       }
-       catch(Exception e)
-       {
-           System.out.println("error agregar " + e.toString());
-       }
+         bd.cerrar();
    }
 
 
    public void borrar()
    {
-      URL = "jdbc:mysql://127.0.0.1/1ls221";
-      user = "root";
-      pass = "root";
+      BD bd = new BD();
 
       cedula = "";
       nombre = "";
@@ -254,37 +223,13 @@ public class Mysql implements ActionListener
 
       sql = "";
 
-      try
-      {
-         Connection con = DriverManager.getConnection(URL,user,pass);
-         Statement stmt = con.createStatement();
          //sql = "delete from cliente where cedula = '8-5'";
          sql = "delete from cliente where cedula = '" + tf_cedula.getText() + "'";
 
-         System.out.println(sql);
 
-         stmt.executeUpdate(sql);
+         bd.executeUpdate(sql);
 
-         stmt.close();
-         con.close();
-       }
-       catch(Exception e)
-       {
-           System.out.println("error agregar " + e.toString());
-       }
+         bd.cerrar();
 
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-  
