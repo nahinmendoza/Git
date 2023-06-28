@@ -6,6 +6,7 @@ public class PuzzleGame {
     public static void main(String[] args) 
     {
         new PuzzleGame();
+       
     }
 
     PuzzleGame() 
@@ -16,6 +17,9 @@ public class PuzzleGame {
         ventana.setLayout(null);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setVisible(true);
+
+        
+         ventana.add( System.println("Grafico de pruiebaiahfdjkf"));
     }
 
 }
