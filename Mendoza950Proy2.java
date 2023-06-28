@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class Mendoza950Proy2 extends JFrame implements ActionListener {
     private JButton[] puzzleButtons;
