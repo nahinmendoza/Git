@@ -237,7 +237,7 @@ public class Mendoza950Proy2 extends JFrame implements ActionListener {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new PuzzleGame();
+                new Mendoza950Proy2();
             }
         });
     }

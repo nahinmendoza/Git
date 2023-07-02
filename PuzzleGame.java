@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
-
+import java.awt.Color;
 import java.awt.event.*;
 import java.util.Random;
 
@@ -12,7 +12,7 @@ public class PuzzleGame implements ActionListener {
     JFrame ventana;
     JButton[] btn_boton;
     JButton btn_iniciar, btn_iniciar2, btn_verificar;
-    JLabel lbl_tiempo;
+    JLabel lbl_tiempo, lbl_presentacion, lbl_presentacion2, lbl_presentacion3, lbl_presentacion4, lbl_presentacion5, lbl_presentacion6, lbl_presentacion7, lbl_presentacion8, lbl_presentacion9;;
     JTextField tf_tiempo;
     Timer timer;
     int tiempo;
@@ -26,6 +26,7 @@ public class PuzzleGame implements ActionListener {
         ventana = new JFrame("ATRAPA EL CARDUMEN");
         ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);
         ventana.setLayout(null);
+        ventana.getContentPane().setBackground(Color.GRAY);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         btn_boton = new JButton[16]; 
@@ -68,9 +69,48 @@ public class PuzzleGame implements ActionListener {
                 tf_tiempo.setText(tiempoFormateado);
             }
         });
+        
+        
+            // LABEL PARA LA PRESENTACION
+        lbl_presentacion = new JLabel("UNIVERSIDAD TECNOLOGICA DE PANAMA\n");
+        lbl_presentacion.setBounds(160, 150, 450, 200);
+        ventana.add(lbl_presentacion);
+
+        lbl_presentacion2 = new JLabel("FACULTAD DE INGENIERIA DE SISTEMAS COMPUTACIONALES\n");
+        lbl_presentacion2.setBounds(100, 170, 450, 200);
+        ventana.add(lbl_presentacion2);
+
+        lbl_presentacion3 = new JLabel("LIC. EN DESARROLLO DE SOFTWARE\n");
+        lbl_presentacion3.setBounds(180, 190, 450, 200);
+        ventana.add(lbl_presentacion3);
+
+        lbl_presentacion4 = new JLabel("DESARROLLO DE SOFTWARE 3\n");
+        lbl_presentacion4.setBounds(195, 210, 450, 200);
+        ventana.add(lbl_presentacion4);
+
+        lbl_presentacion5 = new JLabel("RICARDO CHAN\n");
+        lbl_presentacion5.setBounds(240, 230, 450, 200);
+        ventana.add(lbl_presentacion5);
+
+        lbl_presentacion6 = new JLabel("NAHIN MENDOZA\n");
+        lbl_presentacion6.setBounds(235, 250, 450, 200);
+        ventana.add(lbl_presentacion6);
+
+        lbl_presentacion7 = new JLabel("8-989-50\n");
+        lbl_presentacion7.setBounds(255, 270, 450, 200);
+        ventana.add(lbl_presentacion7);
+
+        lbl_presentacion8 = new JLabel("1LS221\n");
+        lbl_presentacion8.setBounds(260, 290, 450, 200);
+        ventana.add(lbl_presentacion8);
+
+        lbl_presentacion9 = new JLabel("02/06/2023\n");
+        lbl_presentacion9.setBounds(250, 310, 450, 200);
+        ventana.add(lbl_presentacion9);
 
         ventana.setVisible(true);
     }
+    
 
     private void revolver() {
         int i, j, x, y;
@@ -85,7 +125,9 @@ public class PuzzleGame implements ActionListener {
             btn_boton[i].setLocation(btn_boton[j].getLocation().x, btn_boton[j].getLocation().y);
             btn_boton[j].setLocation(x, y);
         }
+        
         ventana.repaint();
+        
     }
     
     private String formatTiempo(int segundos) {
@@ -104,6 +146,13 @@ public class PuzzleGame implements ActionListener {
             tf_tiempo.setText("00:00:00");
             timer.start();
             revolver(); 
+        }
+        if (e.getSource() == btn_iniciar2)
+        {
+            tiempo = 0;
+            tf_tiempo.setText("00:00:00");
+            timer.start();
+            revolver();
         }
     }
 }
