@@ -74,7 +74,7 @@ public class Revolver implements ActionListener
          int x, y;
          x = btn_boton[0].getLocation().x;
          y = btn_boton[0].getLocation().y;
-         btn_boton[0].setLocation(x,y+20);
+         btn_boton[0].setLocation(x,y+50);
       }    
    }
 }
