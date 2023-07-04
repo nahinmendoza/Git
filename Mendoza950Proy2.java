@@ -1,6 +1,3 @@
-
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,23 +7,23 @@ import java.util.Collections;
 import java.util.List;
 
 public class Mendoza950Proy2 extends JFrame implements ActionListener {
-    private JButton[] puzzleButtons;
-    private JButton startButton;
-    private JButton startButton2;
-    private JButton checkButton;
-    private JTextField playerNameField;
-    private JButton saveButton;
-    private JButton loadButton;
+    private JButton[] btn_boton;
+    private JButton btn_iniciar;
+    private JButton btn_iniciar2;
+    private JButton btn_verificar;
+    private JTextField nombreField;
+    private JButton btn_guardar;
+    private JButton btn_consultar;
     private Timer timer;
-    private int moves;
-    private int seconds;
-    private JLabel timeLabel;
-    private JLabel movesLabel;
-    private List<Player> topPlayers;
+    private int movimientos;
+    private int seg;
+    private JLabel lbl_tiempo;
+    private JLabel lbl_movimientos;
+    private List<jugador> jugador;
     JFrame ventana;
 
-    private static final int PUZZLE_SIZE = 16; // 15 numbered buttons + 1 empty button
-    private static final int PUZZLE_DIMENSION = 4; // 4x4 grid layout
+    private static final int tamano = 16;
+    private static final int dimension = 4;
 
     public Mendoza950Proy2() {
         ventana = new JFrame("Rompecabeza");
@@ -34,169 +31,211 @@ public class Mendoza950Proy2 extends JFrame implements ActionListener {
         ventana.setLayout(null);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel puzzlePanel = new JPanel(new GridLayout(PUZZLE_DIMENSION, PUZZLE_DIMENSION));
-        puzzleButtons = new JButton[PUZZLE_SIZE];
+        JPanel rompecabeza= new JPanel(new GridLayout(dimension, dimension));
 
-        for (int i = 0; i < PUZZLE_SIZE; i++) {
-            puzzleButtons[i] = new JButton();
-            puzzleButtons[i].addActionListener(this);
-            puzzlePanel.add(puzzleButtons[i]);
+        btn_boton = new JButton[tamano];
+
+        for (int i = 0; i < tamano; i++) {
+            btn_boton[i] = new JButton();
+            btn_boton[i].addActionListener(this);
+            btn_boton[i].setPreferredSize(new Dimension(80, 80)); // Cambiar tamaño de los botones
+            rompecabeza.add(btn_boton[i]);
         }
 
-        add(puzzlePanel, BorderLayout.CENTER);
+        add(rompecabeza, BorderLayout.CENTER);
 
-        JPanel buttonPanel = new JPanel(new FlowLayout());
+        JPanel ventana = new JPanel(new FlowLayout());
 
-        startButton = new JButton("Iniciar");
-        startButton.addActionListener(this);
-        buttonPanel.add(startButton);
+        btn_iniciar = new JButton("Iniciar");
+        btn_iniciar.addActionListener(this);
+        ventana.add(btn_iniciar);
 
-        startButton2 = new JButton("Iniciar2");
-        startButton2.addActionListener(this);
-        buttonPanel.add(startButton2);
+        btn_iniciar2 = new JButton("Iniciar2");
+        btn_iniciar2.addActionListener(this);
+        ventana.add(btn_iniciar2);
 
-        checkButton = new JButton("Verificar");
-        checkButton.addActionListener(this);
-        buttonPanel.add(checkButton);
+        btn_verificar = new JButton("Verificar");
+        btn_verificar.addActionListener(this);
+        ventana.add(btn_verificar);
 
-        playerNameField = new JTextField(10);
-        buttonPanel.add(playerNameField);
+        nombreField = new JTextField(10);
+        ventana.add(nombreField);
 
-        saveButton = new JButton("Guardar");
-        saveButton.addActionListener(this);
-        buttonPanel.add(saveButton);
+        btn_guardar = new JButton("Guardar");
+        btn_guardar.addActionListener(this);
+        ventana.add(btn_guardar);
 
-        loadButton = new JButton("Consultar archivo");
-        loadButton.addActionListener(this);
-        buttonPanel.add(loadButton);
+        btn_consultar = new JButton("Consultar archivo");
+        btn_consultar.addActionListener(this);
+        ventana.add(btn_consultar);
 
-        timeLabel = new JLabel("Tiempo: 0 segundos");
-        buttonPanel.add(timeLabel);
+        lbl_tiempo = new JLabel("Tiempo: 0 segundos");
+        ventana.add(lbl_tiempo);
 
-        movesLabel = new JLabel("Movimientos: 0");
-        buttonPanel.add(movesLabel);
+        lbl_movimientos = new JLabel("Movimientos: 0");
+        ventana.add(lbl_movimientos);
 
-        add(buttonPanel, BorderLayout.SOUTH);
+        add(ventana, BorderLayout.SOUTH);
 
         timer = new Timer(1000, new TimerListener());
 
-        topPlayers = new ArrayList<>();
+        jugador = new ArrayList<>();
+
+        // LABEL PARA LA PRESENTACION
+        JPanel presentaciion = new JPanel(new GridLayout(9, 2));
+        presentaciion.setBounds(50, 150, 200, 350); // Posicionar el panel de presentación
+        presentaciion.setBackground(Color.WHITE); // Cambiar el color de fondo del panel
+
+        JLabel lbl_presentacion1 = new JLabel("UNIVERSIDAD TECNOLOGICA DE PANAMA");
+        presentaciion.add(lbl_presentacion1);
+
+        JLabel lbl_presentacion2 = new JLabel("FACULTAD DE INGENIERIA DE SISTEMAS COMPUTACIONALES");
+        presentaciion.add(lbl_presentacion2);
+
+        JLabel lbl_presentacion3 = new JLabel("LIC. EN DESARROLLO DE SOFTWARE");
+        presentaciion.add(lbl_presentacion3);
+
+        JLabel lbl_presentacion4 = new JLabel("DESARROLLO DE SOFTWARE 3");
+        presentaciion.add(lbl_presentacion4);
+
+        JLabel lbl_presentacion5 = new JLabel("RICARDO CHAN");
+        presentaciion.add(lbl_presentacion5);
+
+        JLabel lbl_presentacion6 = new JLabel("NAHIN MENDOZA");
+        presentaciion.add(lbl_presentacion6);
+
+        JLabel lbl_presentacion7 = new JLabel("8-989-50");
+        presentaciion.add(lbl_presentacion7);
+
+        JLabel lbl_presentacion8 = new JLabel("1LS221");
+        presentaciion.add(lbl_presentacion8);
+
+        JLabel lbl_presentacion9 = new JLabel("03/07/2023");
+        presentaciion.add(lbl_presentacion9);
+
+        ventana.add(presentaciion);
 
         setVisible(true);
     }
 
-    private void startGame() {
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 1; i < PUZZLE_SIZE; i++) {
-            numbers.add(i);
-        }
-        Collections.shuffle(numbers);
-
-        for (int i = 0; i < PUZZLE_SIZE - 1; i++) {
-            puzzleButtons[i].setText(String.valueOf(numbers.get(i)));
-        }
-        puzzleButtons[PUZZLE_SIZE - 1].setText("");
-
-        moves = 0;
-        seconds = 0;
+    private void iniciar() {
         timer.start();
+
+        List<Integer> numero = new ArrayList<>();
+        for (int i = 1; i < tamano; i++) {
+            numero.add(i);
+        }
+        Collections.shuffle(numero);
+
+        for (int i = 0; i < tamano - 1; i++) {
+            btn_boton[i].setText(String.valueOf(numero.get(i)));
+        }
+        btn_boton[tamano - 1].setText("");
+
+        movimientos = 0;
+        seg = 0;
     }
 
-    private void moveButton(int buttonIndex) {
-        int emptyIndex = findEmptyButtonIndex();
+    private void iniciar2() {
+        iniciar();
+        int vacio = posc_vacia();
+        if (vacio == tamano - 1 || vacio == -1) {
+            return;
+        }
+        int lastIndex = tamano - 2;
+        btn_cambios(vacio, lastIndex);
+    }
 
-        if (isAdjacent(buttonIndex, emptyIndex)) {
-            swapButtons(buttonIndex, emptyIndex);
-            moves++;
-            updateMovesLabel();
+    private void mover_btn(int buttonIndex) {
+        int vacio = posc_vacia();
 
-            if (isPuzzleSolved()) {
+        if (adjac(buttonIndex, vacio)) {
+            btn_cambios(buttonIndex, vacio);
+            movimientos++;
+            updatelbl_movimientos();
+
+            if (resuelto()) {
                 timer.stop();
-                String playerName = playerNameField.getText();
-                Player currentPlayer = new Player(playerName, seconds);
-                topPlayers.add(currentPlayer);
-                Collections.sort(topPlayers);
-                if (topPlayers.size() > 5) {
-                    topPlayers = topPlayers.subList(0, 5);
+                String nombre = nombreField.getText();
+                jugador jugador_act = new jugador(nombre, seg);
+                jugador.add(jugador_act);
+                Collections.sort(jugador);
+                if (jugador.size() > 5) {
+                    jugador = jugador.subList(0, 5);
                 }
                 JOptionPane.showMessageDialog(this, "¡Felicidades, has resuelto el rompecabezas!");
             }
         }
     }
 
-    private int findEmptyButtonIndex() {
-        for (int i = 0; i < PUZZLE_SIZE; i++) {
-            if (puzzleButtons[i].getText().equals("")) {
+    private int posc_vacia() {
+        for (int i = 0; i < tamano; i++) {
+            if (btn_boton[i].getText().equals("")) {
                 return i;
             }
         }
         return -1;
     }
 
-    private boolean isAdjacent(int buttonIndex, int emptyIndex) {
-        int row1 = buttonIndex / PUZZLE_DIMENSION;
-        int col1 = buttonIndex % PUZZLE_DIMENSION;
-        int row2 = emptyIndex / PUZZLE_DIMENSION;
-        int col2 = emptyIndex % PUZZLE_DIMENSION;
+    private boolean adjac(int buttonIndex, int vacio) {
+        int row1 = buttonIndex / dimension;
+        int col1 = buttonIndex % dimension;
+        int row2 = vacio / dimension;
+        int col2 = vacio % dimension;
 
         return (row1 == row2 && Math.abs(col1 - col2) == 1) || (col1 == col2 && Math.abs(row1 - row2) == 1);
     }
 
-    private void swapButtons(int index1, int index2) {
-        String tempText = puzzleButtons[index1].getText();
-        puzzleButtons[index1].setText(puzzleButtons[index2].getText());
-        puzzleButtons[index2].setText(tempText);
+    private void btn_cambios(int index1, int index2) {
+        String tempText = btn_boton[index1].getText();
+        btn_boton[index1].setText(btn_boton[index2].getText());
+        btn_boton[index2].setText(tempText);
     }
 
-    private boolean isPuzzleSolved() {
-        for (int i = 0; i < PUZZLE_SIZE - 1; i++) {
-            if (!puzzleButtons[i].getText().equals(String.valueOf(i + 1))) {
+    private boolean resuelto() {
+        for (int i = 0; i < tamano - 1; i++) {
+            if (!btn_boton[i].getText().equals(String.valueOf(i + 1))) {
                 return false;
             }
         }
-        return puzzleButtons[PUZZLE_SIZE - 1].getText().equals("");
+        return btn_boton[tamano - 1].getText().equals("");
     }
 
-    private void updateMovesLabel() {
-        movesLabel.setText("Movimientos: " + moves);
+    private void updatelbl_movimientos() {
+        lbl_movimientos.setText("Movimientos: " + movimientos);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == startButton) {
-            startGame();
-        } else if (e.getSource() == startButton2) {
-            int emptyIndex = findEmptyButtonIndex();
-            if (emptyIndex == PUZZLE_SIZE - 1 || emptyIndex == -1) {
-                return;
-            }
-            int lastIndex = PUZZLE_SIZE - 2;
-            swapButtons(emptyIndex, lastIndex);
-        } else if (e.getSource() == checkButton) {
-            if (isPuzzleSolved()) {
+        if (e.getSource() == btn_iniciar) {
+            iniciar();
+        } else if (e.getSource() == btn_iniciar2) {
+            iniciar2();
+        } else if (e.getSource() == btn_verificar) {
+            if (resuelto()) {
                 JOptionPane.showMessageDialog(this, "¡El rompecabezas está en orden!");
             } else {
                 JOptionPane.showMessageDialog(this, "El rompecabezas aún no está en orden.");
             }
-        } else if (e.getSource() == saveButton) {
-            String playerName = playerNameField.getText();
-            Player currentPlayer = new Player(playerName, seconds);
-            topPlayers.add(currentPlayer);
-            Collections.sort(topPlayers);
-            if (topPlayers.size() > 5) {
-                topPlayers = topPlayers.subList(0, 5);
+        } else if (e.getSource() == btn_guardar) {
+            String nombre = nombreField.getText();
+            jugador jugador_act = new jugador(nombre, seg);
+            jugador.add(jugador_act);
+            Collections.sort(jugador);
+            if (jugador.size() > 5) {
+                jugador = jugador.subList(0, 5);
             }
             JOptionPane.showMessageDialog(this, "Jugador guardado correctamente.");
-        } else if (e.getSource() == loadButton) {
-            StringBuilder playerList = new StringBuilder("Lista de jugadores:\n");
-            for (Player player : topPlayers) {
-                playerList.append(player.getName()).append(": ").append(player.getTime()).append(" segundos\n");
+        } else if (e.getSource() == btn_consultar) {
+            StringBuilder jugadorList = new StringBuilder("Lista de jugadores:\n");
+            for (jugador jugador : jugador) {
+                jugadorList.append(jugador.getName()).append(": ").append(jugador.getTime()).append(" segundos\n");
             }
-            JOptionPane.showMessageDialog(this, playerList.toString());
+            JOptionPane.showMessageDialog(this, jugadorList.toString());
         } else {
-            for (int i = 0; i < PUZZLE_SIZE; i++) {
-                if (e.getSource() == puzzleButtons[i]) {
-                    moveButton(i);
+            for (int i = 0; i < tamano; i++) {
+                if (e.getSource() == btn_boton[i]) {
+                    mover_btn(i);
                     break;
                 }
             }
@@ -206,16 +245,16 @@ public class Mendoza950Proy2 extends JFrame implements ActionListener {
     private class TimerListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            seconds++;
-            timeLabel.setText("Tiempo: " + seconds + " segundos");
+            seg++;
+            lbl_tiempo.setText("Tiempo: " + seg + " segundos");
         }
     }
 
-    private static class Player implements Comparable<Player> {
+    private static class jugador implements Comparable<jugador> {
         private String name;
         private int time;
 
-        public Player(String name, int time) {
+        public jugador(String name, int time) {
             this.name = name;
             this.time = time;
         }
@@ -229,7 +268,7 @@ public class Mendoza950Proy2 extends JFrame implements ActionListener {
         }
 
         @Override
-        public int compareTo(Player o) {
+        public int compareTo(jugador o) {
             return Integer.compare(this.time, o.time);
         }
     }
