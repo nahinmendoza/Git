@@ -73,7 +73,7 @@ public class JuegoPesca implements ActionListener {
         // TEXTFIELD PARA LA UBICACION DEL CARDUMEN
         tf_ubicacion = new JTextField();
         tf_ubicacion.setBounds(600, 700, 55, 25);
-        tf_ubicacion.setVisible(true);
+        tf_ubicacion.setVisible(false);
         ventana.add(tf_ubicacion);
 
         // LABEL PARA MOSTRAR INTENTOS
