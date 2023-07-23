@@ -55,6 +55,7 @@ public class Menu implements ActionListener
        
       ventana.setJMenuBar(menuBar);
 
+      
       listModel = new DefaultListModel<String>();
       lst_lista = new JList<String>(listModel);
       scrollPane = new JScrollPane(lst_lista);
