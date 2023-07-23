@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class PBD {
 
    private String driver = "com.mysql.jdbc.Driver";
-   private String URL = "jdbc:mysql://8.0.31/hospital";
+   private String URL = "jdbc:mysql://localhost3306/hospital";
    private String usuario = "root";
    private String contra = "241002";
    public Connection con;
