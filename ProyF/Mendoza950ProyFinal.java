@@ -17,7 +17,7 @@ public class Mendoza950ProyFinal implements ActionListener{
     public static void main(String[] args)
     {
         new Mendoza950ProyFinal();
-        PBD con = new PBD();
+        new PBD();
     }
 
     Mendoza950ProyFinal()
